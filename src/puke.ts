@@ -1,3 +1,4 @@
+import './fetch-polyfill'
 import _debug from 'debug'
 import { importSchema, endpoints, createDatabase, deleteInFauna, deleteDatabase } from './fauna'
 import { getRemoteSchema } from './graphql'
