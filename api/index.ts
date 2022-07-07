@@ -24,10 +24,19 @@ export default async (request: VercelRequest, response: VercelResponse): Promise
   debug(`Request id: ${id}`)
 
   const payload = await readBody(request)
-  debug('Payload received: %o', payload)
+  debug(
+    `Payload received${
+      payload && payload.length ? ` [${payload.length} characters]` : ''
+    }: ${payload}`
+  )
 
   if (!payload) {
     response.status(400).send(`Payload must be sent`)
+    return
+  }
+
+  if (payload.length > 10000) {
+    response.status(413).send(`Payload Too Large`)
     return
   }
 
