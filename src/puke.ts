@@ -5,6 +5,25 @@ import { getRemoteSchema } from './graphql'
 
 const debug = _debug('brainyduck-puke:puke')
 
+const sponsor = (schema: string) => `
+"""
+
+
+💸    ---     This schema was generated in the cloud at the expense of the Brainyduck community.    ---    📉
+😇    ---   Please be kind and consider donating to the Brainyduck project if you find it useful.   ---    😇
+🐥🙏   --                 The DUCK needs your help to spread his word to the world!                  --   🙏🐥
+
+                                          https://brainy.sh/duck
+                                    https://github.com/sponsors/zvictor
+
+🌟💎🎆                     THIS SPACE IS AVAILABLE FOR ADVERTISING AND SPONSORSHIP!                     🎆💎🌟
+
+
+"""
+
+${schema}
+`
+
 export default async (id: string, payload: string) => {
   const { ref, secret } = (await createDatabase(id)) as any
   debug(`Database ${id} created`)
@@ -26,5 +45,5 @@ export default async (id: string, payload: string) => {
   await deleteInFauna(ref)
   debug(`Key ${ref} deleted`)
 
-  return schema
+  return sponsor(schema)
 }
