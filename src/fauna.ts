@@ -1,4 +1,4 @@
-import './fetch-polyfill'
+import './fetch-polyfill.cjs'
 import _debug from 'debug'
 import faunadb from 'faunadb'
 
