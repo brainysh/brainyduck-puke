@@ -1,5 +1,7 @@
 import _debug from 'debug'
 import faunadb from 'faunadb'
+// @ts-ignore
+import fetch, { Headers } from './fetch-ponyfill.cjs'
 
 const q = faunadb.query
 const debug = (type: string) => _debug(`brainyduck-puke:${type}`)
