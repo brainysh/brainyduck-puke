@@ -1,8 +1,13 @@
 import _debug from 'debug'
+import RateLimiter from 'lambda-rate-limiter'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import puke from '../src/puke'
 
 const debug = _debug('brainyduck-puke')
+const rateLimit = RateLimiter({
+  interval: 10 * 60000, // rate limit interval in ms, starts on first request
+  uniqueTokenPerInterval: 50000, // excess causes earliest seen to drop, per instantiation
+}).check
 
 const readBody = async (request: VercelRequest): Promise<string> => {
   const buffers: any[] = []
@@ -15,12 +20,19 @@ const readBody = async (request: VercelRequest): Promise<string> => {
 }
 
 export default async (request: VercelRequest, response: VercelResponse): Promise<void> => {
-  const id = `${+new Date()}_${
-    String(request.headers['x-forwarded-for'] || request.socket.remoteAddress).replace(
-      /[^\d\.]/gm,
-      ''
-    ) || Math.random()
-  }`
+  const ip =
+    request.headers['x-real-ip'] ||
+    request.headers['x-forwarded-for'] ||
+    request.socket.remoteAddress
+
+  try {
+    await rateLimit(50, ip)
+  } catch (error) {
+    response.status(429).send(`Too Many Requests`)
+    return
+  }
+
+  const id = `${+new Date()}_${String(ip).replace(/[^\d\.]/gm, '') || Math.random()}`
   debug(`Request id: ${id}`)
 
   const payload = await readBody(request)
