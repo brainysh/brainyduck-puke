@@ -4,10 +4,11 @@ import faunadb from 'faunadb'
 
 const q = faunadb.query
 const debug = (type: string) => _debug(`brainyduck-puke:${type}`)
+const region = '' // 'us', 'eu', or falsy for classic
 
 export const endpoints = {
-  import: 'https://graphql.us.fauna.com/import',
-  server: 'https://graphql.us.fauna.com/graphql',
+  import: `https://graphql.${region ? `${region}.` : ''}fauna.com/import`,
+  server: `https://graphql.${region ? `${region}.` : ''}fauna.com/graphql`,
 }
 
 const loadSecret = () => {
@@ -26,7 +27,7 @@ const loadSecret = () => {
 
 const client = new faunadb.Client({
   secret: loadSecret(),
-  domain: 'db.us.fauna.com',
+  domain: `db.${region ? `${region}.` : ''}fauna.com`,
 })
 
 export const createDatabase = (name: string) =>
