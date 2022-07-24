@@ -52,5 +52,10 @@ export const importSchema = async (schema: string, key?: string) => {
     }),
   })
 
-  return await response.text()
+  const message = await response.text()
+  if (response.status !== 200) {
+    throw new Error(message)
+  }
+
+  return message
 }

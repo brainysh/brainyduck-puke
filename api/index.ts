@@ -52,6 +52,11 @@ export default async (request: VercelRequest, response: VercelResponse): Promise
     return
   }
 
-  response.status(200).send(await puke(id, payload))
+  try {
+    response.status(200).send(await puke(id, payload))
+  } catch (error) {
+    response.status(500).send(error.message || error)
+  }
+
   response.end()
 }

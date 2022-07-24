@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@types/debug': ^4.1.7
   '@types/graphql': ^14.0.3
+  '@types/lambda-rate-limiter': ^3.0.0
   '@types/node': ^18.0.3
   '@vercel/node': ^2.4.0
   debug: ^4.3.4
@@ -25,6 +26,7 @@ optionalDependencies:
 devDependencies:
   '@types/debug': 4.1.7
   '@types/graphql': 14.5.0
+  '@types/lambda-rate-limiter': 3.0.0
   '@types/node': 18.0.3
   '@vercel/node': 2.4.0
   prettier: 2.7.1
@@ -91,6 +93,10 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/lambda-rate-limiter/3.0.0:
+    resolution: {integrity: sha512-bKej2hv/zn16vb0r86Y/CGZ49nfgFP8DqWQCv28yHWljoe0xNL2aMG+4WXeUFyQe48hmJu/21xhvrlDm2OlFjw==}
     dev: true
 
   /@types/ms/0.7.31:
