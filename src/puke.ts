@@ -9,11 +9,11 @@ const sponsor = (schema: string) => `
 """
 
 
-💸    ---     This schema was generated in the cloud at the expense of the Brainyduck community.    ---    📉
-😇    ---   Please be kind and consider donating to the Brainyduck project if you find it useful.   ---    😇
+💸    ---    This schema was generated in the cloud at the expense of the Brainyduck maintainers.   ---    📉
+😇    ---    Please be kind and consider donating to the Brainyduck project if you find it useful.  ---    😇
 🐥🙏   --                 The DUCK needs your help to spread his word to the world!                  --   🙏🐥
 
-                                          https://brainy.sh/duck
+                                          https://duck.brainy.sh
                                     https://github.com/sponsors/zvictor
 
 🌟💎🎆                     THIS SPACE IS AVAILABLE FOR ADVERTISING AND SPONSORSHIP!                     🎆💎🌟

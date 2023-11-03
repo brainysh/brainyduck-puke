@@ -26,7 +26,9 @@ export default async (request: VercelRequest, response: VercelResponse): Promise
     request.socket.remoteAddress
 
   try {
-    await rateLimit(50, ip)
+    if (ip) {
+      await rateLimit(50, Array.isArray(ip) ? ip[0] : ip)
+    }
   } catch (error) {
     response.status(429).send(`Too Many Requests`)
     return

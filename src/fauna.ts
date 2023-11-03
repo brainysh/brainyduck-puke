@@ -45,7 +45,7 @@ export const deleteDatabase = (name: string) => deleteInFauna(q.Database(name))
 export const importSchema = async (schema: string, key?: string) => {
   debug('importSchema')(`Pushing the schema to ${endpoints.import}`)
 
-  const response = await fetch(endpoints.import, {
+  const response = await globalThis.fetch(endpoints.import, {
     method: 'POST',
     body: schema,
     headers: new Headers({
