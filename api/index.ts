@@ -1,7 +1,7 @@
 import _debug from 'debug'
 import RateLimiter from 'lambda-rate-limiter'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
-import puke from '../src/puke'
+import puke from '../src/puke.js'
 
 const debug = _debug('brainyduck-puke')
 const rateLimit = RateLimiter({

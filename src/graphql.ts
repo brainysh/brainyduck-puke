@@ -1,8 +1,8 @@
 // The code in this file has been copied from https://github.com/prisma-labs/get-graphql-schema/blob/2e8732322ba52158aa6bb163de3d7107a041cc52/src/index.ts
 
-import { introspectionQuery } from 'graphql/utilities/introspectionQuery'
-import { buildClientSchema } from 'graphql/utilities/buildClientSchema'
-import { printSchema } from 'graphql/utilities/schemaPrinter'
+import { introspectionQuery } from 'graphql/utilities/introspectionQuery.js'
+import { buildClientSchema } from 'graphql/utilities/buildClientSchema.js'
+import { printSchema } from 'graphql/utilities/schemaPrinter.js'
 
 interface Options {
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE'

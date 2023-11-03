@@ -4,7 +4,7 @@ import faunadb from 'faunadb'
 
 const q = faunadb.query
 const debug = (type: string) => _debug(`brainyduck-puke:${type}`)
-const region = '' // 'us', 'eu', or falsy for classic
+const region = 'us' // 'us', 'eu', or falsy for classic
 
 export const endpoints = {
   import: `https://graphql.${region ? `${region}.` : ''}fauna.com/import`,

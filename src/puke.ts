@@ -1,7 +1,7 @@
 import './fetch-polyfill.cjs'
 import _debug from 'debug'
-import { importSchema, endpoints, createDatabase, deleteInFauna, deleteDatabase } from './fauna'
-import { getRemoteSchema } from './graphql'
+import { importSchema, endpoints, createDatabase, deleteInFauna, deleteDatabase } from './fauna.js'
+import { getRemoteSchema } from './graphql.js'
 
 const debug = _debug('brainyduck-puke:puke')
 
